@@ -76,35 +76,34 @@ $(document).ready(function() {
     return array;
   }
 
-  // // The code that runs the filter buttons at the top of the page. This currently allows users to filter by 'type' (ie musical, movie or tv show).
-  // $("#filters button").each(function () {
-  //   $(this).on("click", function () {
-  //     const filtertag = $(this).attr("data-filter");
-  //     $("#message").hide();
-  //     $("div.emoji-card-title").addClass("hide-card");
-  //     if (filtertag == "view-all") {
-  //       // If the user clicks on view all, show all cards.
-  //       $("div.emoji-card").show();
-  //     } else if (
-  //       // If the user clicks on movies, musicals or tv shows, show the cards that fall into that category and hide all cards that do not fall into that category.
-  //       $("div.emoji-card[data-filter='" + filtertag + "']").length > 0
-  //     ) {
-  //       $("div.emoji-card").show();
-  //       $("div.emoji-card:not([data-filter='" + filtertag + "'])").hide();
-  //     } else {
-  //       // If there are no cards that match the filter, display a message that says that there are no cards for that category.
-  //       $("div.emoji-card").hide();
-  //       $("#message").show();
-  //       $("#message").html(
-  //         "<p>There are no " + filtertag + " cards on this page. 🙁</p>"
-  //       );
-  //     }
-  //   });
-  // });
+  // The code that runs the filter buttons at the top of the page. This currently allows users to filter by 'type' (ie musical, movie or tv show).
+  $("#filters button").each(function () {
+    $(this).on("click", function () {
+      const filtertag = $(this).attr("data-filter");
+      $("#message").hide();
+      $("div.emoji-card-title").addClass("hide-card");
+      if (filtertag == "view-all") {
+        // If the user clicks on view all, show all cards.
+        $("div.emoji-card").show();
+      } else if (
+        // If the user clicks on movies, musicals or tv shows, show the cards that fall into that category and hide all cards that do not fall into that category.
+        $("div.emoji-card[data-filter='" + filtertag + "']").length > 0
+      ) {
+        $("div.emoji-card").show();
+        $("div.emoji-card:not([data-filter='" + filtertag + "'])").hide();
+      } else {
+        // If there are no cards that match the filter, display a message that says that there are no cards for that category.
+        $("div.emoji-card").hide();
+        $("#message").show();
+        $("#message").html(
+          "<p>There are no " + filtertag + " cards on this page. 🙁</p>"
+        );
+      }
+    });
+  });
 
 
    // The code that runs the filter buttons at the top of the page. This currently allows users to filter by 'type' (ie musical, movie or tv show) converted from jquery to plain javscript
-
   
 const filterButtons = document.querySelectorAll("#filters button");
 
@@ -144,6 +143,8 @@ filterButtons.forEach(function (button) {
         }
     });
 });
+
+  
 
   // Reveal the movie or show title when the user clicks on the emojis.
   
