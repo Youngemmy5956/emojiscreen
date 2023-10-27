@@ -124,6 +124,33 @@ $(document).ready(function() {
     $(this).find(".hint").removeClass("hint-reveal");
   });
 
+
+// The javascript code for the display a hint
+  // Get the emojis container element
+const emojisContainer = document.getElementById("emojis");
+
+// Add an event listener for mouseover to show the hint
+emojisContainer.addEventListener("mouseover", function (event) {
+  const target = event.target;
+
+  // Check if the mouseover event occurred on an element with the class "hint-container"
+  if (target.classList.contains("hint-container")) {
+    // Find the hint element within the clicked "hint-container" and add the "hint-reveal" class
+    target.querySelector(".hint").classList.add("hint-reveal");
+  }
+});
+
+// Add an event listener for mouseleave to hide the hint
+emojisContainer.addEventListener("mouseleave", function (event) {
+  const target = event.target;
+
+  // Check if the mouseleave event occurred on an element with the class "hint-container"
+  if (target.classList.contains("hint-container")) {
+    // Find the hint element within the clicked "hint-container" and remove the "hint-reveal" class
+    target.querySelector(".hint").classList.remove("hint-reveal");
+  }
+});
+
   // Toggle to expand or hide all of the movie/show names by clicking an icon
   $(".btn-reveal-all").click(function () {
     $(this).toggleClass(["revealed"]);
