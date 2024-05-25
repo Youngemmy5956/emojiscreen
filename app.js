@@ -102,6 +102,50 @@ $(document).ready(function() {
     });
   });
 
+
+   // The code that runs the filter buttons at the top of the page. This currently allows users to filter by 'type' (ie musical, movie or tv show) converted from jquery to plain javscript
+  
+const filterButtons = document.querySelectorAll("#filters button");
+
+filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        
+        const filtertag = button.getAttribute("data-filter");
+      
+        document.getElementById("message").style.display = "none";
+
+        const emojiCardTitles = document.querySelectorAll(".emoji-card-title");
+        emojiCardTitles.forEach(function (title) {
+            title.classList.add("hide-card");
+        });
+
+        if (filtertag === "view-all") {
+            const emojiCards = document.querySelectorAll(".emoji-card");
+            emojiCards.forEach(function (card) {
+                card.style.display = "block";
+            });
+        } else {
+            const matchingEmojiCards = document.querySelectorAll(".emoji-card[data-filter='" + filtertag + "']");
+            matchingEmojiCards.forEach(function (card) {
+                card.style.display = "block";
+            });
+
+            const nonMatchingEmojiCards = document.querySelectorAll(".emoji-card:not([data-filter='" + filtertag + "'])");
+            nonMatchingEmojiCards.forEach(function (card) {
+                card.style.display = "none";
+            });
+          
+            if (matchingEmojiCards.length === 0) {
+                const message = document.getElementById("message");
+                message.style.display = "block";
+                message.innerHTML = "<p>There are no " + filtertag + " cards on this page. 🙁</p>";
+            }
+        }
+    });
+});
+
+  
+
   // Reveal the movie or show title when the user clicks on the emojis.
   
   const emojiImages = document.getElementsByClassName("emoji-images");
